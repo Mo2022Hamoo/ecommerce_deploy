@@ -9,6 +9,8 @@ import CardRouter from "./modules/card/card.routes.js";
 import CouponRouter from "./modules/coupon/coupon.routes.js";
 import orderRouter from "./modules/order/order.routes.js";
 import { GlobalErrorHandling } from "./utils/errorHandling.js";
+import rateLimit from "express-rate-limit";
+import morgan from "morgan";
 
 export const bootstrap = (app, express) => {
   connectDB();
@@ -36,8 +38,19 @@ export const bootstrap = (app, express) => {
 
   app.use(cors());
   //Allow feaching Data
-
-
+  //application
+  if (process.env.MODE == "DEV") {
+    app.use(morgan("dev"));
+  }
+  // =====================================chk rate limiter==================================================
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 50, // Limit each IP to 100 requests per `window`
+    standardHeaders: "draft-7",
+    legacyHeaders: false,
+  });
+  // Apply the rate limiting
+  app.use(limiter);
   // API
   app.use("/user", userRouter);
   app.use("/category", categoryRouter);
