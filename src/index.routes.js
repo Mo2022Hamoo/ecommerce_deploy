@@ -12,7 +12,8 @@ import { GlobalErrorHandling } from "./utils/errorHandling.js";
 
 export const bootstrap = (app, express) => {
   connectDB();
-
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
   // app.use(bodyParser.urlencoded({ extended: true }));
   // const allowlist = ["htttp://127.0.0.1:3000", "htttp://127.0.0.1:7000"];
   // app.use((req, res, next) => {
@@ -35,8 +36,7 @@ export const bootstrap = (app, express) => {
 
   app.use(cors());
   //Allow feaching Data
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+
 
   // API
   app.use("/user", userRouter);
