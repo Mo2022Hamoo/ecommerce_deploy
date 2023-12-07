@@ -74,6 +74,7 @@ export const confirmEmail = asyncHandler(async (req, res, next) => {
 export const login = asyncHandler(async (req, res, next) => {
   //get data
   const { email, password } = req.body;
+  console.log({ email, password });
   //chk email in DB
   const chkuser = await usermodel.findOne({ email: email });
   if (!chkuser) {
