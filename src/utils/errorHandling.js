@@ -21,5 +21,5 @@ export const asyncHandler = (controller) => {
 export const GlobalErrorHandling = (error, req, res, next) => {
   return res
     .status(error.cause || 500)
-    .json({ messageG: error.message, stackG: error.stack });
+    .json({ message: error.message, stack: error.stack });
 };
