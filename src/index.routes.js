@@ -11,6 +11,7 @@ import orderRouter from "./modules/order/order.routes.js";
 import { GlobalErrorHandling } from "./utils/errorHandling.js";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
+import { WelocmeHtml } from "./utils/welcomepage.js";
 
 export const bootstrap = (app, express) => {
   connectDB();
@@ -63,7 +64,9 @@ export const bootstrap = (app, express) => {
 
   //Globale error handling
   app.use(GlobalErrorHandling);
-
+  app.all("/", (req, res) => {
+    return res.send(WelocmeHtml());
+  });
   //API bad
   app.all("*", (req, res) => res.send("invalid router link or method!"));
   const port = parseInt(process.env.port) || 7102;

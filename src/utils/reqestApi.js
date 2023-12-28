@@ -20,10 +20,8 @@ export async function fetchDataAndPrint(apiEndpoint) {
 }
 export const startjob = () => {
   // جدولة المهمة لتنفيذ الوظيفة كل 5 دقائق
-  const job = new cron.CronJob("9 * * * * *", () => {
-    fetchDataAndPrint(
-      "https://mohamed-e-commerce-z8yi.onrender.com/product/getProduct?page=0&size=4"
-    );
+  const job = new cron.CronJob("*/59 * * * * *", () => {
+    fetchDataAndPrint("https://mohamed-e-commerce-z8yi.onrender.com");
   });
   job.start();
 };
