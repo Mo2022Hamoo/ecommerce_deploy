@@ -41,7 +41,7 @@ export const WelocmeHtml = () => {
         href="https://documenter.getpostman.com/view/27782301/2s9Ye8fup3"
         target="_blank"
         rel="noopener noreferrer"
-        >My API</a
+        >documentation </a
       >
     </p>
 
