@@ -36,9 +36,9 @@ export const WelocmeHtml = () => {
     <br />
     <br />
     <p>
-      Postman file content: -
+      Postman documentation content: -
       <a
-        href="https://drive.google.com/drive/folders/19norxCG5NzECEUHJA46QQ8PrUn-AFsWv?usp=sharing"
+        href="https://documenter.getpostman.com/view/27782301/2s9Ye8fup3"
         target="_blank"
         rel="noopener noreferrer"
         >My API</a
